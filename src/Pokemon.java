@@ -10,7 +10,7 @@ public class Pokemon {
     private float weight;
     private List<String> abilities;
     private int generation;
-    private boolean isLegendary;
+    private String isLegendary;
 
     public Pokemon(String name, 
     int pokedexNumber, 
@@ -21,7 +21,7 @@ public class Pokemon {
     float weight, 
     List<String> abilities, 
     int generation, 
-    boolean isLegendary) {
+    String isLegendary) {
         this.name = name;
         this.pokedexNumber = pokedexNumber;
         this.type1 = type1;
@@ -68,7 +68,7 @@ public class Pokemon {
         return generation;
     }
 
-    public boolean isLegendary() {
+    public String isLegendary() {
         return isLegendary;
     }
 
