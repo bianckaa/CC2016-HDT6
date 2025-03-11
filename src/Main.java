@@ -13,12 +13,26 @@ public class Main {
             System.out.printf("| %-3s | %-40s |\n", "2", "TreeMap");
             System.out.printf("| %-3s | %-40s |\n", "3", "LinkedHashMap");
             System.out.println("+-----+------------------------------------------+");
-            System.out.print("Ingrese el N° del tipo de Map a utilizar: ");            
-            int opcionImplementacion = scanner.nextInt();
-            scanner.nextLine();
-
+            
+            int opcionImplementacion = -1;
+            boolean opcionValidaFactory = false;
+            
+            while (!opcionValidaFactory) {
+                System.out.print("Ingrese el N° del tipo de Map a utilizar: ");
+                try {
+                    opcionImplementacion = Integer.parseInt(scanner.nextLine());
+                    if (opcionImplementacion >= 1 && opcionImplementacion <= 3) {
+                        opcionValidaFactory = true;
+                    } else {
+                        System.out.println("Opción inválida. Debe ser un número entre 1 y 3.");
+                    }
+                } catch (NumberFormatException e) {
+                    System.out.println("Opción inválida. Debe ingresar un número.");
+                }
+            }
+            
             IFactory factory;
-
+            
             switch (opcionImplementacion) {
                 case 1 -> {
                     factory = new HashMapFactory(); 
@@ -34,10 +48,10 @@ public class Main {
                 }
                 default -> throw new IllegalArgumentException("Opción inválida.");
             }
-
+            
             Map<String, Pokemon> allPokemons = PokemonData.loadPokemons("src/pokemon_data.csv");
             PokemonManager manager = new PokemonManager(factory, allPokemons);
-
+            
             boolean continuar = true;
             while (continuar) {
                 System.out.println("\n+-----+--------------------------------------------------------------+");
@@ -52,10 +66,23 @@ public class Main {
                 System.out.printf("| %-3s | %-60s |\n", "5", "Mostrar todos los Pokémon por habilidad");
                 System.out.printf("| %-3s | %-60s |\n", "6", "Salir");
                 System.out.println("+-----+--------------------------------------------------------------+");
-                System.out.print("Ingrese el N° de la opción a elegir: ");
-                int opcionMenu = scanner.nextInt();
-                scanner.nextLine();
-            
+                
+                int opcionMenu = -1;
+                boolean opcionValida = false;
+                while (!opcionValida) {
+                    System.out.print("Ingrese el N° de la opción a elegir: ");
+                    try {
+                        opcionMenu = Integer.parseInt(scanner.nextLine());
+                        if (opcionMenu >= 1 && opcionMenu <= 6) {
+                            opcionValida = true;
+                        } else {
+                            System.out.println("Opción inválida. Debe ser un número entre 1 y 6.");
+                        }
+                    } catch (NumberFormatException e) {
+                        System.out.println("Opción inválida. Debe ingresar un número.");
+                    }
+                }
+                
                 switch (opcionMenu) {
                     case 1 -> {
                         System.out.print("Ingrese el nombre del Pokémon a agregar: ");
@@ -64,7 +91,8 @@ public class Main {
                     }
                     case 2 -> {
                         System.out.print("Ingrese el nombre del Pokémon: ");
-                        System.out.println(manager.mostrarDatosPokemon(scanner.nextLine()));
+                        String name =  scanner.nextLine().toLowerCase();
+                        System.out.println(manager.mostrarDatosPokemon(name));
                     }
                     case 3 -> manager.ordenadoTipo1UserCollection().forEach(System.out::println);
                     case 4 -> manager.ordenadoTipo1AllPokemons().forEach(System.out::println);

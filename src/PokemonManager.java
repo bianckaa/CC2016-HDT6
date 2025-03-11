@@ -32,21 +32,24 @@ public class PokemonManager {
         return pokemon.toString();
     }
 
-    public List<Pokemon> ordenadoTipo1UserCollection() {
+    public List<String> ordenadoTipo1UserCollection() {
         return userCollection.values().stream()
                 .sorted(Comparator.comparing(Pokemon::getType1))
+                .map(pokemon -> "Nombre: " + pokemon.getName() + ", Tipo 1: " + pokemon.getType1()) 
                 .toList();
-    }
+    }    
 
-    public List<Pokemon> ordenadoTipo1AllPokemons() {
+    public List<String> ordenadoTipo1AllPokemons() {
         return allPokemons.values().stream()
                 .sorted(Comparator.comparing(Pokemon::getType1))
+                .map(pokemon -> "Nombre: " + pokemon.getName() + ", Tipo 1: " + pokemon.getType1()) 
                 .toList();
-    }
+    }    
 
     public List<Pokemon> pokemonsPorHabilidad(String ability) {
+        String abilityPattern = "\\b" + ability.toLowerCase().trim() + "\\b";  
         return allPokemons.values().stream()
-                .filter(pokemon -> pokemon.getAbilities().contains(ability))
+                .filter(pokemon -> pokemon.getAbilities().toLowerCase().matches(".*" + abilityPattern + ".*")) 
                 .collect(Collectors.toList());
     }
     
