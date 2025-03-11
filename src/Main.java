@@ -49,7 +49,7 @@ public class Main {
                 default -> throw new IllegalArgumentException("Opción inválida.");
             }
             
-            Map<String, Pokemon> allPokemons = PokemonData.loadPokemons("src/pokemon_data.csv");
+            Map<String, Pokemon> allPokemons = PokemonData.loadPokemons("pokemon_data.csv");
             PokemonManager manager = new PokemonManager(factory, allPokemons);
             
             boolean continuar = true;

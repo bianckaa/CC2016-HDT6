@@ -52,5 +52,4 @@ public class PokemonManager {
                 .filter(pokemon -> pokemon.getAbilities().toLowerCase().matches(".*" + abilityPattern + ".*")) 
                 .collect(Collectors.toList());
     }
-    
 }
