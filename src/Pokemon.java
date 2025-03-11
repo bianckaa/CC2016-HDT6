@@ -1,5 +1,3 @@
-import java.util.List;
-
 public class Pokemon {
     private String name;
     private int pokedexNumber;
@@ -8,8 +6,8 @@ public class Pokemon {
     private String classification;
     private float height;
     private float weight;
-    private List<String> abilities;
-    private int generation;
+    private String abilities;
+    private String generation;
     private String isLegendary;
 
     public Pokemon(String name, 
@@ -19,8 +17,8 @@ public class Pokemon {
     String classification, 
     float height, 
     float weight, 
-    List<String> abilities, 
-    int generation, 
+    String abilities, 
+    String generation, 
     String isLegendary) {
         this.name = name;
         this.pokedexNumber = pokedexNumber;
@@ -60,20 +58,32 @@ public class Pokemon {
         return weight;
     }
 
-    public List<String> getAbilities() {
+    public String getAbilities() {
         return abilities;
     }
 
-    public int getGeneration() {
+    public String getGeneration() {
         return generation;
     }
 
-    public String isLegendary() {
+    public String getIsLegendary() {
         return isLegendary;
     }
 
     @Override
     public String toString() {
-        return "Nombre: " + name + ", Type1: " + type1 + ", Type2: " + type2 + ", Habilidades: " + abilities;
+        return String.format("Datos del Pokemon\n" +
+        "===================\n" + 
+        "Nombre: %s\n" +
+        "Pokedex Number: %d\n" +
+        "Tipo 1: %s\n" +
+        "Tipo 2: %s\n" +
+        "Clasificación: %s\n" +
+        "Altura (m): %.2f\n" +
+        "Peso (kg): %.2f\n" +
+        "Habilidades: %s\n" +
+        "Generación: %s\n" +
+        "Estado Legendario: %s\n",
+        name, pokedexNumber, type1, type2, classification, height, weight, abilities);
     }
 }

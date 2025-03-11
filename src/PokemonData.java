@@ -1,32 +1,40 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class PokemonData {
     public static Map<String, Pokemon> loadPokemons(String filename) throws IOException {
-        Map<String, Pokemon> pokemons = new HashMap<>();
+        Map<String, Pokemon> pokemons = new LinkedHashMap<>();
+        
         try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
             String line;
             reader.readLine();
+
             while ((line = reader.readLine()) != null) {
-                String[] parts = line.split(",");
+                try {
+                    String[] datos = line.split(",");
 
-                int pokedexNumber = Integer.parseInt(parts[1].trim());
-                float height = Float.parseFloat(parts[5].trim());
-                float weight = Float.parseFloat(parts[6].trim());
-                int generation = Integer.parseInt(parts[8].trim());               
-                List<String> abilities = Arrays.asList(parts[7].split(","));
+                    String name = datos[0].trim();
+                    int pokedexNumber = Integer.parseInt(datos[1].trim());
+                    String type1 = datos[2].trim();
+                    String type2 = datos[3].trim().isEmpty() ? null : datos[3].trim();
+                    String classification = datos[4].trim();
+                    float height = Float.parseFloat(datos[5].trim());
+                    float weight = Float.parseFloat(datos[6].trim());
+                    String abilities = datos[7].replace("\"", "").trim();
+                    String generation = datos[8].trim();               
+                    String legendaryStatus = datos[9].trim();
 
-                Pokemon pokemon = new Pokemon(parts[0], pokedexNumber, parts[2], 
-                                            parts[3], parts[4], height, 
-                                            weight, abilities, generation, 
-                                            parts[9]);
-                pokemons.put(pokemon.getName(), pokemon);
+                    Pokemon pokemon = new Pokemon(name, pokedexNumber, type1, type2, classification, height, 
+                    weight, abilities, generation, legendaryStatus);
+                    pokemons.put(pokemon.getName().toLowerCase(), pokemon);
+                } catch (Exception e) {
+                    System.out.println("Error en la línea: " + line + " - " + e.getMessage());
+                }
             }
-        } return pokemons;
+        } 
+        return pokemons;
     } 
 }

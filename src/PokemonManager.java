@@ -1,18 +1,19 @@
 import java.util.*;
-import java.util.HashMap;
 
 public class PokemonManager {
     private Map<String, Pokemon> allPokemons;
     private Map<String, Pokemon> userCollection;
 
     public PokemonManager(IFactory factory, Map<String, Pokemon> allPokemons) {
-        this.allPokemons = new HashMap<>();
+        this.allPokemons = allPokemons;
         this.userCollection = factory.createMap();
     }
 
     public String agregarPokemon(String name) {
+        name = name.trim().toLowerCase();
+
         if (!allPokemons.containsKey(name)) {
-            return "Erro: Pokemon no encontrado.";
+            return "Error: Pokemon no encontrado.";
         }
 
         if (userCollection.containsKey(name)) {
@@ -31,6 +32,7 @@ public class PokemonManager {
         return pokemon.toString();
     }
 
+    //REVISAR
     public List<Pokemon> ordenadoTipo1UserCollection() {
         return userCollection.values().stream()
                 .sorted(Comparator.comparing(Pokemon::getType1))
