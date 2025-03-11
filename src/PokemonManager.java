@@ -1,3 +1,13 @@
+/**
+ * Universidad del Valle de Guatemala
+ * Algoritmos y Estructuras de Datos - Seccion 31
+ * Hoja de Trabajo 6
+ * Biancka Raxón 24960
+ * 
+ * Clase: PokemonManager.java
+ * Clase que gestiona una coleccion de Pokemon
+ */
+
 import java.util.*;
 import java.util.stream.Collectors;
 

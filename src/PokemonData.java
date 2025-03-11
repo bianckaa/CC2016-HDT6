@@ -1,3 +1,12 @@
+/**
+ * Universidad del Valle de Guatemala
+ * Algoritmos y Estructuras de Datos - Seccion 31
+ * Hoja de Trabajo 6
+ * Biancka Raxón 24960
+ * 
+ * Clase: PokemonData
+ * Clase que carga datos de Pokemon desde un archivo CSV. 
+ */
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;

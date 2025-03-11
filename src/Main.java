@@ -1,3 +1,14 @@
+/**
+ * Universidad del Valle de Guatemala
+ * Algoritmos y Estructuras de Datos - Seccion 31
+ * Hoja de Trabajo 6
+ * Biancka Raxón 24960
+ * 
+ * Clase: Main
+ * Clase principal del programa
+ * Controlar la logica de funcionamiento para que se pueda interactuar con el usuario.
+ */
+
 import java.io.IOException;
 import java.util.*;
 
