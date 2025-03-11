@@ -3,11 +3,20 @@ import java.util.*;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        
         try (Scanner scanner = new Scanner(System.in)) {
-            System.out.println("Seleccione el tipo de Map a utilizar:\n1. HashMap\n2. TreeMap\n3. LinkedHashMap");
+            System.out.println("\n+-----+------------------------------------------+");
+            System.out.println("|                SELECCIONAR MAP                 |");
+            System.out.println("+-----+------------------------------------------+");
+            System.out.printf("| %-3s | %-40s |\n", "N°", "Tipo de Map");
+            System.out.println("+-----+------------------------------------------+");
+            System.out.printf("| %-3s | %-40s |\n", "1", "HashMap");
+            System.out.printf("| %-3s | %-40s |\n", "2", "TreeMap");
+            System.out.printf("| %-3s | %-40s |\n", "3", "LinkedHashMap");
+            System.out.println("+-----+------------------------------------------+");
+            System.out.print("Ingrese el N° del tipo de Map a utilizar: ");            
             int opcionImplementacion = scanner.nextInt();
             scanner.nextLine();
+
             IFactory factory;
 
             switch (opcionImplementacion) {
@@ -17,7 +26,7 @@ public class Main {
                 }
                 case 2 -> {
                     factory = new TreeMapFactory();
-                    System.out.println("¡Usaremos un Tree Mao para ordenar su colección!");
+                    System.out.println("¡Usaremos un Tree Map para ordenar su colección!");
                 }
                 case 3 -> {
                     factory = new LinkedHashMapFactory();
@@ -31,25 +40,47 @@ public class Main {
 
             boolean continuar = true;
             while (continuar) {
-                System.out.println("\nOpciones:\n1. Agregar Pokémon\n2. Mostrar datos de un Pokémon\n3. Mostrar colección ordenada por Type1\n4. Mostrar todos los Pokémon ordenados por Type1\n5. Mostrar Pokémon por habilidad\n6. Salir");
+                System.out.println("\n+-----+--------------------------------------------------------------+");
+                System.out.println("|                             MENÚ                                   |");
+                System.out.println("+-----+--------------------------------------------------------------+");
+                System.out.printf("| %-3s | %-60s |\n", "N°", "Descripción");
+                System.out.println("+-----+--------------------------------------------------------------+");
+                System.out.printf("| %-3s | %-60s |\n", "1", "Agregar Pokémon a colección personal");
+                System.out.printf("| %-3s | %-60s |\n", "2", "Mostrar datos de un Pokémon");
+                System.out.printf("| %-3s | %-60s |\n", "3", "Mostrar colección personal ordenada por Type1");
+                System.out.printf("| %-3s | %-60s |\n", "4", "Mostrar todos los Pokémon ordenados por Type1");
+                System.out.printf("| %-3s | %-60s |\n", "5", "Mostrar todos los Pokémon por habilidad");
+                System.out.printf("| %-3s | %-60s |\n", "6", "Salir");
+                System.out.println("+-----+--------------------------------------------------------------+");
+                System.out.print("Ingrese el N° de la opción a elegir: ");
                 int opcionMenu = scanner.nextInt();
                 scanner.nextLine();
-
+            
                 switch (opcionMenu) {
                     case 1 -> {
-                        System.out.println("Ingrese el nombre del Pokémon a agregar:");
+                        System.out.print("Ingrese el nombre del Pokémon a agregar: ");
                         String name =  scanner.nextLine().toLowerCase();
                         System.out.println(manager.agregarPokemon(name));
                     }
                     case 2 -> {
-                        System.out.println("Ingrese el nombre del Pokémon:");
+                        System.out.print("Ingrese el nombre del Pokémon: ");
                         System.out.println(manager.mostrarDatosPokemon(scanner.nextLine()));
                     }
                     case 3 -> manager.ordenadoTipo1UserCollection().forEach(System.out::println);
                     case 4 -> manager.ordenadoTipo1AllPokemons().forEach(System.out::println);
                     case 5 -> {
-                        System.out.println("Ingrese la habilidad:");
-                        manager.pokemonsPorHabilidad(scanner.nextLine()).forEach(System.out::println);
+                        System.out.print("Ingrese la habilidad para filtrar: ");
+                        String habilidad = scanner.nextLine();
+                        List<Pokemon> pokemonsConHabilidad = manager.pokemonsPorHabilidad(habilidad);
+                        
+                        if (!pokemonsConHabilidad.isEmpty()) {
+                            System.out.println("\nLos Pokémon que contienen la habilidad \"" + habilidad + "\" son:");
+                            for (int i = 0; i < pokemonsConHabilidad.size(); i++) {
+                                System.out.println((i + 1) + ". " + pokemonsConHabilidad.get(i).getName());
+                            }
+                        } else {
+                            System.out.println("No se encontraron Pokémon con esa habilidad.");
+                        }                        
                     }
                     case 6 -> {
                         continuar = false;

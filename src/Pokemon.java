@@ -69,10 +69,10 @@ public class Pokemon {
     public String getIsLegendary() {
         return isLegendary;
     }
-
+    
     @Override
     public String toString() {
-        return String.format("Datos del Pokemon\n" +
+        return String.format("\nDatos del Pokemon\n" +
         "===================\n" + 
         "Nombre: %s\n" +
         "Pokedex Number: %d\n" +
@@ -84,6 +84,6 @@ public class Pokemon {
         "Habilidades: %s\n" +
         "Generación: %s\n" +
         "Estado Legendario: %s\n",
-        name, pokedexNumber, type1, type2, classification, height, weight, abilities);
+        name, pokedexNumber, type1, type2 != null ? type2 : "Desconocido", classification, height, weight, abilities, generation, isLegendary);
     }
 }

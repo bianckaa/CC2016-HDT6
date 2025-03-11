@@ -14,7 +14,7 @@ public class PokemonData {
 
             while ((line = reader.readLine()) != null) {
                 try {
-                    String[] datos = line.split(",");
+                    String[] datos = line.split("(?<!\"),");
 
                     String name = datos[0].trim();
                     int pokedexNumber = Integer.parseInt(datos[1].trim());
@@ -23,12 +23,24 @@ public class PokemonData {
                     String classification = datos[4].trim();
                     float height = Float.parseFloat(datos[5].trim());
                     float weight = Float.parseFloat(datos[6].trim());
-                    String abilities = datos[7].replace("\"", "").trim();
+                    
+                    
+                    String abilities = datos[7].trim();
+                    String formatedAbilities = "";
+
+                    
+                    if (abilities.startsWith("\"") && abilities.endsWith("\"")) {
+                        abilities = abilities.substring(1, abilities.length() - 1); 
+                        formatedAbilities = abilities.replace(",", ", "); 
+                    } else {
+                        formatedAbilities = abilities;
+                    }
+
                     String generation = datos[8].trim();               
                     String legendaryStatus = datos[9].trim();
 
                     Pokemon pokemon = new Pokemon(name, pokedexNumber, type1, type2, classification, height, 
-                    weight, abilities, generation, legendaryStatus);
+                    weight, formatedAbilities, generation, legendaryStatus);
                     pokemons.put(pokemon.getName().toLowerCase(), pokemon);
                 } catch (Exception e) {
                     System.out.println("Error en la línea: " + line + " - " + e.getMessage());
