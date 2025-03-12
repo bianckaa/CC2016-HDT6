@@ -10,6 +10,11 @@
 import java.util.*;
 
 public class LinkedHashMapFactory implements IFactory{
+    /** 
+     * Crea y devuelve la instancia de un LinkedHashMap.
+     * 
+     * @return Instancia de un LinkedHashMap.
+     */
     public Map<String, Pokemon> createMap() {
         return new LinkedHashMap<>();
     }

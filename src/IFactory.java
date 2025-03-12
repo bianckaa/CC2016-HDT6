@@ -12,5 +12,10 @@
 import java.util.Map;
 
 public interface IFactory {
+    /** 
+     * Crea y devuelve un Map con un String como Key y un objeto Pokemon como valor.
+     * 
+     * @return Map con un String como Key y un objeto Pokemon como valor.
+     */
     Map<String, Pokemon> createMap();
 }

@@ -14,6 +14,13 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class PokemonData {
+    /**
+     * Devuelve un mapa con los datos de los Pokemon cargados desde el archivo CSV.
+     * 
+     * @param filename Nombre del archivo CSV
+     * @return Mapa con los datos de los Pokemon, teniendo de Key el nombre de cada uno. 
+     * @throws IOException Si hay un error al leer el archivo.
+     */
     public static Map<String, Pokemon> loadPokemons(String filename) throws IOException {
         Map<String, Pokemon> pokemons = new LinkedHashMap<>();
         

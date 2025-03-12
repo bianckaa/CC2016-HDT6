@@ -11,6 +11,11 @@ import java.util.Map;
 import java.util.TreeMap;
 
 public class TreeMapFactory implements IFactory{
+    /** 
+     * Crea y devuelve la instancia de un TreeMap.
+     * 
+     * @return Instancia de un TreeMap.
+     */
     public Map<String, Pokemon> createMap() {
         return new TreeMap<>();
     }

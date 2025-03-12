@@ -12,6 +12,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class HashMapFactory implements IFactory {
+    /** 
+     * Crea y devuelve la instancia de un HashMap.
+     * 
+     * @return Instancia de un HashMap.
+     */
     public Map<String, Pokemon> createMap() {
         return new HashMap<>();
     }

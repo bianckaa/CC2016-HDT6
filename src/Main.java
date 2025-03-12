@@ -13,6 +13,12 @@ import java.io.IOException;
 import java.util.*;
 
 public class Main {
+    /**
+     * Permite al usuario tener una coleccion personal con sus Pokemon y 
+     * más opciones para visualizar los Pokemon tanto de su coleccion, como los de la coleccion general. 
+     * 
+     * @param args
+     */
     public static void main(String[] args) throws IOException {
         try (Scanner scanner = new Scanner(System.in)) {
             System.out.println("\n+-----+------------------------------------------+");
