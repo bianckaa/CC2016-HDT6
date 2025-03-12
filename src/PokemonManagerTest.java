@@ -8,7 +8,7 @@ public class PokemonManagerTest {
     @Test
     public void shouldAddPokemonToUserCollection() throws IOException {
         IFactory factory = new HashMapFactory();
-        Map<String, Pokemon> allPokemons = PokemonData.loadPokemons("src/pokemon_data.csv");
+        Map<String, Pokemon> allPokemons = PokemonData.loadPokemons("pokemon_data.csv");
         PokemonManager manager = new PokemonManager(factory, allPokemons);
     
         String name = "pikachu";
@@ -21,7 +21,7 @@ public class PokemonManagerTest {
     @Test
     public void shouldShowDataAllPokemon() throws IOException {
         IFactory factory = new HashMapFactory();
-        Map<String, Pokemon> allPokemons = PokemonData.loadPokemons("src/pokemon_data.csv");
+        Map<String, Pokemon> allPokemons = PokemonData.loadPokemons("pokemon_data.csv");
         PokemonManager manager = new PokemonManager(factory, allPokemons);
     
         String name = "pikachu";
@@ -36,7 +36,7 @@ public class PokemonManagerTest {
     @Test
     public void shouldShowPokemonByAbility() throws IOException {
         IFactory factory = new HashMapFactory();
-        Map<String, Pokemon> allPokemons = PokemonData.loadPokemons("src/pokemon_data.csv");
+        Map<String, Pokemon> allPokemons = PokemonData.loadPokemons("pokemon_data.csv");
         PokemonManager manager = new PokemonManager(factory, allPokemons);
 
         String habilidad = "Overgrow";
