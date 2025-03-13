@@ -6,6 +6,7 @@
             "name": "Main",
             "request": "launch",
             "mainClass": "Main",
+            "args": "",
             "projectName": "Repositorio_27e03412"
         },
         {
@@ -13,10 +14,11 @@
             "name": "Main",
             "request": "launch",
             "mainClass": "Main",
-            "projectName": "Repositorio",
+            "projectName": "Repositorio_27e03412",
             "classPaths": [
                 "${workspaceFolder}/bin",
-                "${workspaceFolder}/lib/*"
+                "${workspaceFolder}/lib/*",
+                "${workspaceFolder}/test" 
             ]
         },
         {
@@ -45,7 +47,7 @@
             "name": "Main",
             "request": "launch",
             "mainClass": "Main",
-            "projectName": "Repositorio"
+            "projectName": "Repositorio_27e03412"
         }
     ]
 }
